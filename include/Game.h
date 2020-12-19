@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
+#include <string>
 
 class Game
 {
@@ -9,7 +10,7 @@ class Game
         Game();
 
         //initalize the SDL subsystems, create a window and a renderer
-        void init(string title, int x, int y, int width, int height, int flags = 0);
+        int init(std::string title, int x, int y, int width, int height, int flags);
 
         //render the required elements onto the screen
         void render();
