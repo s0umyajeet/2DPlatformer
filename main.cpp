@@ -1,6 +1,4 @@
-#include <SDL2/SDL.h>
 #include "Game.h"
-#include <iostream>
 
 Game* gameObj = new Game();
 
