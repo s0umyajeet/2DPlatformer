@@ -67,14 +67,27 @@ void Game::greet()
 
 void Game::handleEvents()
 {
-
+    SDL_Event event;
+    if (SDL_PollEvent(&event)) {
+        switch(event.type) {
+        //if the user presses the 'x' button in order to close the game
+        case SDL_QUIT:
+                m_isRunning = false;
+                break;
+        default:
+                break;
+        }
+    }
 }
 
 void Game::clean()
 {
+    std::cout << "Cleaning game!" << std::endl;
     //free the renderer
     SDL_DestroyRenderer(m_renderer);
 
     //free the window
     SDL_DestroyWindow(m_window);
+
+    SDL_Quit();
 }
