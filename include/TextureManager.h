@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <SDL2/SDL_image.h>
+#include <LogManager.h>
 
 class TextureManager
 {
