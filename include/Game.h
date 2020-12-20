@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
+#include <LogManager.h>
+#include <TextureManager.h>
 #include <string>
 
 class Game
@@ -20,9 +22,6 @@ class Game
 
         //game phycics
         void update();
-
-        //error logging
-        void errorLogger();
 
         //cleaing the game
         void clean();
