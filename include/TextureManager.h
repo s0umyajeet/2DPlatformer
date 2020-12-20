@@ -9,18 +9,32 @@
 class TextureManager
 {
     public:
-        TextureManager();
+        //delete the copy constructor -- for singleton
+        TextureManager(const TextureManager&) = delete;
+
+        //load textures from images/sprites
         bool load(std::string fileName, std::string id, SDL_Renderer* renderer);
+
+        //static draw (no animation)
         void draw(std::string id, int x, int y, int width, int  height,
                   SDL_Renderer* pRenderer, SDL_RendererFlip flip =  SDL_FLIP_NONE);
 
+        //drawing for animation
         void drawFrame(std::string id, int x, int y, int width, int  height,
                        int currentRow, int currentFrame, SDL_Renderer* renderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
-        std::unordered_map<std::string, SDl_Texture*> m_texMap;
-    protected:
+        //returns the static class instacne -- for singleton
+        static TextureManager& getInstance();
 
     private:
+        //ctor private --  for singleton
+        TextureManager();
+
+        //Texture map for storing references to textures against string id(s)
+        std::unordered_map<std::string, SDL_Texture*> m_texMap;
+
+        //private static instance  -- for singleton
+        static TextureManager m_instance;
 };
 
 #endif // TEXTUREMANAGER_H
