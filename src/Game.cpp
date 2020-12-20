@@ -32,7 +32,12 @@ int Game::init(std::string title, int x, int y, int width, int height, int flags
         SDL_SetRenderDrawColor(m_renderer, 0, 255, 0, 255);
     }
 
-    LogManager::getInstance().logSuccess("Init");
+    if (!TextureManager::getInstance().load("assets/animate.png", "animate", m_renderer)) {
+        LogManager::getInstance().logError("Texture Loading");
+    } else {
+        LogManager::getInstance().logSuccess("Texture loading");
+    }
+
 
     //everyting initialized successfull, start the main loop
     m_isRunning = true;
@@ -40,20 +45,17 @@ int Game::init(std::string title, int x, int y, int width, int height, int flags
 }
 
 void Game::update() {
+    m_currentFrame = int(((SDL_GetTicks() / 80) % 6));
 }
 
 void Game::render()
 {
     //Clear the screen with the set color
     SDL_RenderClear(m_renderer);
-
+    TextureManager::getInstance().draw("animate", 0, 0, 128, 82, m_renderer);
+    TextureManager::getInstance().drawFrame("animate", 100, 100, 128, 82, 0, m_currentFrame, m_renderer);
     //Actually draw to the screen
     SDL_RenderPresent(m_renderer);
-}
-
-void Game::greet()
-{
-    std::cout << "running" << std::endl;
 }
 
 void Game::handleEvents()
