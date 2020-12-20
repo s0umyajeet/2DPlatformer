@@ -26,9 +26,6 @@ class Game
         //cleaing the game
         void clean();
 
-        //for debug
-        void greet();
-
         //is the game loop running?
         inline bool isRunning() { return m_isRunning; }
 
@@ -36,6 +33,7 @@ class Game
         bool m_isRunning;
         SDL_Window *m_window;
         SDL_Renderer *m_renderer;
+        int m_currentFrame = 0;
 };
 
 #endif // GAME_H
