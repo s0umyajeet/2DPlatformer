@@ -1,47 +1,38 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game()
-{
-
-}
-
-void Game::errorLogger()
-{
-    std::cout << "Something went wrong" << std::endl;
-    std::cout << "Error message: " << SDL_GetError() << std::endl;
-}
+Game::Game() { }
 
 int Game::init(std::string title, int x, int y, int width, int height, int flags = 0)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        errorLogger();
+        LogManager::getInstance().logError("SDL Subsystems");
         return 0;
     } else {
-        std::cout << "SDL subsystems initialized!" << std::endl;
+        LogManager::getInstance().logSuccess("SDL subsystems");
     }
 
     m_window = SDL_CreateWindow(title.c_str(), x, y, width, height, flags);
 
     if (m_window == NULL) {
-        errorLogger();
+        LogManager::getInstance().logError("Window");
         return 0;
     } else {
-        std::cout << "Window created successfully!" << std::endl;
+        LogManager::getInstance().logSuccess("Window");
     }
 
     m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 
     if (m_renderer == NULL) {
-        errorLogger();
+        LogManager::getInstance().logError("Renderer");
         return 0;
     } else {
-        std::cout << "Renderer created successfully!" << std::endl;
+        LogManager::getInstance().logSuccess("Renderer");
         //Set the renderer to clear the screen with a solid color (for now)
         SDL_SetRenderDrawColor(m_renderer, 0, 255, 0, 255);
     }
 
-    std::cout << "Init success!" << std::endl;
+    LogManager::getInstance().logSuccess("Init");
 
     //everyting initialized successfull, start the main loop
     m_isRunning = true;
@@ -82,7 +73,7 @@ void Game::handleEvents()
 
 void Game::clean()
 {
-    std::cout << "Cleaning game!" << std::endl;
+    LogManager::getInstance().logSuccess("Cleaning game");
     //free the renderer
     SDL_DestroyRenderer(m_renderer);
 
