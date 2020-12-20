@@ -89,5 +89,6 @@ void Game::clean()
     //free the window
     SDL_DestroyWindow(m_window);
 
+    //terminates all initialized subsystems
     SDL_Quit();
 }
