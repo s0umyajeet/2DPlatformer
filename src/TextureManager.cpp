@@ -14,8 +14,10 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* re
     SDL_Surface *tempSurface = IMG_Load(fileName.c_str());
 
     if (tempSurface == NULL) {
-        //Error manager code here
+        LogManager::getInstance().logError("Surface");
         return false;
+    } else {
+        LogManager::getInstance().logSuccess("Temp Surface");
     }
 
     SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
@@ -24,12 +26,13 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* re
     SDL_FreeSurface(tempSurface);
 
     if (tempTexture == NULL) {
-        //Error manager code here
+        LogManager::getInstance().logError("Temp Texture");
         return false;
+    } else {
+        LogManager::getInstance().logSuccess("Temp Texture");
     }
 
     m_texMap[id] = tempTexture;
-
     return true;
 }
 
