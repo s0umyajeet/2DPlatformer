@@ -4,6 +4,10 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
+enum LogType{
+    ERROR, SUCCESS
+};
+
 class LogManager
 {
     public:
@@ -11,13 +15,11 @@ class LogManager
         LogManager(const LogManager&) = delete;
 
         //returns the static class instacne -- for singleton
-        static LogManager& getInstance();
+        static LogManager& get();
 
         //error logging
-        void logError(const std::string &customMessage);
+        void logMessage(const std::string &customMessage, enum LogType type);
 
-        //success message
-        void logSuccess(const std::string &customMessage);
     private:
         LogManager();
         static LogManager m_instance;
