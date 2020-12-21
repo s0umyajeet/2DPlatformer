@@ -1,7 +1,5 @@
 #include "Game.h"
 
-Game* gameObj = new Game();
-
 int main(int argc, char* argv[]) {
 
     std::string windowTitle = "Game Window";
@@ -10,14 +8,14 @@ int main(int argc, char* argv[]) {
     int width = 800;
     int height = 600;
 
-    gameObj->init(windowTitle, win_x, win_y, width, height, NULL);
+    Game::get().init(windowTitle, win_x, win_y, width, height, NULL);
 
-    while (gameObj->isRunning()) {
-        gameObj->handleEvents();
-        gameObj->update();
-        gameObj->render();
+    while (Game::get().isRunning()) {
+        Game::get().handleEvents();
+        Game::get().update();
+        Game::get().render();
     }
 
-    gameObj->clean();
+    Game::get().clean();
     return 0;
 }

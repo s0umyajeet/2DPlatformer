@@ -9,7 +9,8 @@
 class Game
 {
     public:
-        Game();
+        //for singleton
+        Game(const Game&) = delete;
 
         //initalize the SDL subsystems, create a window and a renderer
         int init(std::string title, int x, int y, int width, int height, int flags);
@@ -26,16 +27,19 @@ class Game
         //cleaing the game
         void clean();
 
-        //for debug
-        void greet();
-
         //is the game loop running?
         inline bool isRunning() { return m_isRunning; }
 
+        static Game& get();
+
     private:
+        Game();
+        static Game m_instance;
+
         bool m_isRunning;
         SDL_Window *m_window;
         SDL_Renderer *m_renderer;
+        int m_currentFrame = 0;
 };
 
 #endif // GAME_H

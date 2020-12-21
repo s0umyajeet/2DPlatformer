@@ -1,7 +1,14 @@
 #include "Game.h"
 #include <iostream>
 
+Game Game::m_instance;
+
 Game::Game() { }
+
+Game& Game::get()
+{
+    return m_instance;
+}
 
 int Game::init(std::string title, int x, int y, int width, int height, int flags = 0)
 {

@@ -1,8 +1,8 @@
 #include "LogManager.h"
 
-LogManager::LogManager() { }
-
 LogManager LogManager::m_instance;
+
+LogManager::LogManager() { }
 
 LogManager& LogManager::getInstance()
 {
