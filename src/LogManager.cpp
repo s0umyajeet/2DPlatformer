@@ -4,19 +4,23 @@ LogManager::LogManager() { }
 
 LogManager LogManager::m_instance;
 
-LogManager& LogManager::getInstance()
+LogManager& LogManager::get()
 {
     return m_instance;
 }
 
-void LogManager::logError(const std::string &customMessage = "")
+void LogManager::logMessage(const std::string& customMessage, enum LogType type)
 {
-    std::cout << "[ Error ]   : " << customMessage << " : " << SDL_GetError() << std::endl;
-}
-
-void LogManager::logSuccess(const std::string& customMessage = "")
-{
-    std::cout << "[ Success ] : " << customMessage << std::endl;
+    switch (type) {
+    case ERROR:
+        std::cout << "[ Error ]   : " << customMessage << " : " << SDL_GetError() << std::endl;
+        break;
+    case SUCCESS:
+        std::cout << "[ Success ] : " << customMessage << std::endl;
+        break;
+    default:
+        break;
+    }
 }
 
 
