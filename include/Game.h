@@ -27,6 +27,8 @@ class Game
         //cleaing the game
         void clean();
 
+        SDL_Renderer* getRenderer() { return this->m_renderer; }
+
         //is the game loop running?
         inline bool isRunning() { return m_isRunning; }
 
