@@ -40,9 +40,9 @@ int Game::init(std::string title, int x, int y, int width, int height, int flags
     }
 
     if (!TextureManager::getInstance().load("assets/animate.png", "animate", m_renderer)) {
-        LogManager::get().logMessage("Texture Loading");
+        LogManager::get().logMessage("Texture Loading", ERROR);
     } else {
-        LogManager::get().logMessage("Texture loading");
+        LogManager::get().logMessage("Texture loading", SUCCESS);
     }
 
     LogManager::get().logMessage("Init", SUCCESS);
