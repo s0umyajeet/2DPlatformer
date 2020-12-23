@@ -25,7 +25,7 @@ class TextureManager
                        int currentRow, int currentFrame, SDL_Renderer* renderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
         //returns the static class instacne -- for singleton
-        static TextureManager& getInstance();
+        static TextureManager& get();
 
     private:
         //ctor private --  for singleton
