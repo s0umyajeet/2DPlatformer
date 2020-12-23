@@ -17,8 +17,8 @@ SDLGameObject::SDLGameObject(const PropertyLoader* props)
 void SDLGameObject::draw()
 {
     TextureManager::get().drawFrame(m_textureID, m_x, m_y,
-                                             m_width, m_height, m_currentRow,
-                                             m_currentFrame, Game::get().getRenderer());
+                                    m_width, m_height, m_currentRow,
+                                    m_currentFrame, Game::get().getRenderer());
 
 }
 
