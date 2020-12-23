@@ -4,7 +4,7 @@ TextureManager::TextureManager() { }
 
 TextureManager TextureManager::m_instance;
 
-TextureManager& TextureManager::getInstance()
+TextureManager& TextureManager::get()
 {
     return m_instance;
 }
