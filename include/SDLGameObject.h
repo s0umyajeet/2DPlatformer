@@ -2,6 +2,7 @@
 #define SDLGAMEOBJECT_H
 
 #include <GameObject.h>
+#include <SDL2/SDL.h>
 #include <string>
 
 
