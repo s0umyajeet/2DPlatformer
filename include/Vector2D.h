@@ -2,7 +2,7 @@
 #define VECTOR2D_H
 
 #include <iostream>
-#include <math>
+#include <cmath>
 
 class Vector2D {
     public:
@@ -21,10 +21,10 @@ class Vector2D {
         }
 
         //operator += overload
-        Vector2D& operator+=(Vector2D& v1, const Vector2D& v2) {
-            v1.m_x += v2.m_x;
-            v1.m_y += v2.m_y;
-            return v1;
+        Vector2D operator+=(const Vector2D& v2) {
+            m_x += v2.m_x;
+            m_y += v2.m_y;
+            return (*this);
         }
 
         //operator - overload
@@ -33,12 +33,11 @@ class Vector2D {
         }
 
         //operator -= overload
-        Vector2D& operator-=(Vector2D& v1, const Vector2D& v2) {
-            v1.m_x -= v2.m_x;
-            v1.m_y -= v2.m_y;
-            return v1;
+        Vector2D operator-=(const Vector2D& v2) {
+            m_x -= v2.m_x;
+            m_y -= v2.m_y;
+            return (*this);
         }
-
         //operator * overload
         inline Vector2D operator*(const float scalar) {
             return Vector2D(this->m_x * scalar, this->m_y * scalar);
@@ -76,7 +75,7 @@ class Vector2D {
 
         //for debug
         void printVector() {
-            std::cout << "(" << x << "i + " << y << "j)" << std::endl;
+            std::cout << "(" << m_x << "i + " << m_y << "j)" << std::endl;
         }
 
     private:
