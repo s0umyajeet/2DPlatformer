@@ -47,21 +47,36 @@ int Game::init(std::string title, int x, int y, int width, int height, int flags
 
     LogManager::get().logMessage("Init", SUCCESS);
 
-    //everyting initialized successfull, start the main loop
+    m_player = new Player(new PropertyLoader(100, 100, 128, 82, "animate"));
+    m_enemy = new Enemy(new PropertyLoader(300, 300, 128, 82, "animate"));
+
+//    m_gameObjects.push_back(new Player(new PropertyLoader(100, 100, 128, 82, "animate")));
+//    m_gameObjects.push_back(new Enemy(new PropertyLoader(300, 300, 128, 82, "animate")));
+
     m_isRunning = true;
     return 1;
 }
 
 void Game::update() {
-    m_currentFrame = int(((SDL_GetTicks() / 80) % 6));
+//    for (int i = 0; i < m_gameObjects.size(); i++) {
+//        m_gameObjects[i]->update();
+//    }
+    m_player->update();
+    m_enemy->update();
 }
 
 void Game::render()
 {
     //Clear the screen with the set color
     SDL_RenderClear(m_renderer);
-    TextureManager::get().draw("animate", 0, 0, 128, 82, m_renderer);
-    TextureManager::get().drawFrame("animate", 100, 100, 128, 82, 0, m_currentFrame, m_renderer);
+//    TextureManager::get().drawFrame("animate", 100, 100, 128, 82, 0, m_currentFrame, m_renderer);
+//    for (int i = 0; i < m_gameObjects.size(); i++) {
+//        m_gameObjects[i]->draw();
+//    }
+
+    m_player->draw();
+    m_enemy->draw();
+
     //Actually draw to the screen
     SDL_RenderPresent(m_renderer);
 }
