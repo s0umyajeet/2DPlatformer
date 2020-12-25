@@ -4,7 +4,12 @@
 #include <SDL2/SDL.h>
 #include <LogManager.h>
 #include <TextureManager.h>
+#include <SDLGameObject.h>
+#include <Player.h>
+#include <Enemy.h>
+#include <PropertyLoader.h>
 #include <string>
+#include <vector>
 
 class Game
 {
@@ -27,7 +32,7 @@ class Game
         //cleaing the game
         void clean();
 
-        SDL_Renderer* getRenderer() { return this->m_renderer; }
+        SDL_Renderer* getRenderer() { return m_renderer; }
 
         //is the game loop running?
         inline bool isRunning() { return m_isRunning; }
@@ -41,7 +46,13 @@ class Game
         bool m_isRunning;
         SDL_Window *m_window;
         SDL_Renderer *m_renderer;
-        int m_currentFrame = 0;
+        int m_currentFrame;
+        //testing player and enemy classes
+        GameObject *m_player;
+        GameObject *m_enemy;
+
+        //GameObject Vector
+//        std::vector<GameObject*> m_gameObjects;
 };
 
 #endif // GAME_H
