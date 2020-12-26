@@ -2,8 +2,9 @@
 #define INPUTHANDLER_H
 
 #include <SDL2/SDL.h>
-#include <vector>
+#include <Vector2D.h>
 #include <LogManager.h>
+#include <vector>
 
 class InputHandler
 {
@@ -13,11 +14,13 @@ class InputHandler
         void update();
         void clean();
         bool getMouseButtonState(int buttonNumber);
+        Vector2D* getMousePosition { return this->m_mousePosition; }
 
     private:
         InputHandler();
         static InputHandler m_instance;
         std::vector<bool> m_mouseButtonStates;
+        Vector2D *m_mousePosition;
 };
 
 enum mouseButtons {

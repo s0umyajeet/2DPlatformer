@@ -56,6 +56,11 @@ void InputHandler::update()
             }
         }
 
+        //mouse motion
+        if (event.type == SDL_MOUSEMOTION) {
+            m_mousePosition->setX(event.motion.x);
+            m_mousePosition->setY(event.motion.y);
+        }
     }
 }
 
