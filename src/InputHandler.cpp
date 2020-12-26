@@ -4,9 +4,14 @@
 InputHandler InputHandler::m_instance;
 
 InputHandler::InputHandler() {
+    //initialize all mouse button states to false
+    //i.e not pressed by default
     for (int i = 0; i < 3; i++) {
         m_mouseButtonStates.push_back(false);
     }
+
+    //initialize mouse position
+    m_mousePosition = new Vector2D;
 }
 
 InputHandler& InputHandler::get()
@@ -60,8 +65,29 @@ void InputHandler::update()
         if (event.type == SDL_MOUSEMOTION) {
             m_mousePosition->setX(event.motion.x);
             m_mousePosition->setY(event.motion.y);
+
+//            other way of doing this
+//            int x, y;
+//            SDL_GetMouseState(&x, &y);
+//            m_mousePosition->setX(x);
+//            m_mousePosition->setY(y);
+
         }
+
+        m_keyState = SDL_GetKeyboardState(0);
+
+        if (isKeyDown(SDL_SCANCODE_RETURN)) {
+            std::cout << "you pressed enter" << std::endl;
+        }
+
     }
+}
+
+
+bool InputHandler::isKeyDown(SDL_Scancode key) {
+    if (m_keyState != 0) {
+        return m_keyState[key];
+    } else return false;
 }
 
 bool InputHandler::getMouseButtonState(int buttonNumber) {

@@ -14,13 +14,15 @@ class InputHandler
         void update();
         void clean();
         bool getMouseButtonState(int buttonNumber);
-        Vector2D* getMousePosition { return this->m_mousePosition; }
+        Vector2D* getMousePosition() { return this->m_mousePosition; }
+        bool isKeyDown(SDL_Scancode key);
 
     private:
         InputHandler();
         static InputHandler m_instance;
         std::vector<bool> m_mouseButtonStates;
-        Vector2D *m_mousePosition;
+        Vector2D* m_mousePosition;
+        const Uint8* m_keyState;
 };
 
 enum mouseButtons {
