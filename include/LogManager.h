@@ -5,7 +5,7 @@
 #include <iostream>
 
 enum LogType{
-    ERROR, SUCCESS
+    ERROR, SUCCESS, MESSAGE
 };
 
 class LogManager
