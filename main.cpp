@@ -1,4 +1,4 @@
-#iclude "Game.h"
+#include "Game.h"
 
 #define FPS 60
 #define DELAY_TIME (1000.0f / (FPS))

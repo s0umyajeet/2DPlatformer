@@ -5,9 +5,10 @@
 #include <LogManager.h>
 #include <TextureManager.h>
 #include <SDLGameObject.h>
+#include <PropertyLoader.h>
+#include <InputHandler.h>
 #include <Player.h>
 #include <Enemy.h>
-#include <PropertyLoader.h>
 #include <string>
 #include <vector>
 
@@ -38,6 +39,8 @@ class Game
         inline bool isRunning() { return m_isRunning; }
 
         static Game& get();
+
+        void Quit() { m_isRunning = false; }
 
     private:
         Game();

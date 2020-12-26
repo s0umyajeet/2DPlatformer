@@ -83,17 +83,7 @@ void Game::render()
 
 void Game::handleEvents()
 {
-    SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        switch(event.type) {
-        //if the user presses the 'x' button in order to close the game
-        case SDL_QUIT:
-                m_isRunning = false;
-                break;
-        default:
-                break;
-        }
-    }
+    InputHandler::get().update();
 }
 
 void Game::clean()
@@ -108,3 +98,4 @@ void Game::clean()
     //terminates all initialized subsystems
     SDL_Quit();
 }
+
